@@ -1,0 +1,39 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: eb83ce3d-98d4-4aa1-b3ff-8f7477743ba5
+  title: Análisis de series de tiempo y pronósticos
+  description: Aborda los conceptos fundamentales y las técnicas habituales en el trabajo con series de tiempo. Comprende una serie de guías de ejercicios. 
+  keywords:
+    - Autocorrelación
+    - ARIMA
+    - LSTM
+  date: 2026-02-17
+  authors: 
+    - name: Homero F. Lozza
+  # github:
+  license:
+    content:
+      id: CC-BY-4.0
+    code:
+      id: GPL-3.0-or-later
+  # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+  toc:
+    - file: README.md 
+    - title: Parte 1
+      children:
+        - file: Notebooks/Guide_00/guia-00_EDA.ipynb
+        - file: Notebooks/Guide_01/guía-01_dominio-del-tiempo.ipynb
+        - file: Notebooks/Guide_02/guía-02_dominio-frecuencia.ipynb
+        - file: Notebooks/Guide_03/guia-03_Regresión.ipynb
+    - title: Anexo 1
+      children: 
+        - file: Notebooks/Ancillary_00/auxiliar-00_date-time-types.ipynb
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: tsaf.pdf
+site:
+  template: book-theme
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
