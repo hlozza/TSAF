@@ -22,6 +22,7 @@ project:
     - file: README.md 
     - title: Parte 1
       children:
+        - file: Lectures/Text_01/texto-01_introducción.md
         - file: Notebooks/Guide_00/guia-00_EDA.ipynb
         - file: Notebooks/Guide_01/guía-01_dominio-del-tiempo.ipynb
         - file: Notebooks/Guide_02/guía-02_dominio-frecuencia.ipynb
