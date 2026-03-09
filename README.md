@@ -1,7 +1,7 @@
-Análisis de Series Temporales y Pronósticos
+Análisis de Series de Tiempo y Pronósticos
 ===========================================
 
-El curso **Análisis de Series Temporales y Pronósticos** (TSAF, *Time
+El curso **Análisis de Series de Tiempo y Pronósticos** (TSAF, *Time
 Series Analysis and Forecasting*) busca ser autocontenido pero se
 emplean nociones y métodos de estadística para el análisis de las
 series temporales. El lenguaje de programación R es popular en este

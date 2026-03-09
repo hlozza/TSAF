@@ -44,7 +44,9 @@ valores de la propia serie en los pasos anteriores.
 
 ![Datos Tabulares](Figs/tabular_data.png)
 
-En el aprenizaje estadístico:
+**Figura**: Ilustración de la relación entre las variables independientes (atributos) y la respuesta (target o variable dependiente) para datos tabulares.
+
+En el aprenizaje estadístico para datos tabulares:
 * No importa el orden.
   - Mezclamos para entrenar
 * Una ecuación algebráica relaciona la respuesta con los atributos.
@@ -54,7 +56,9 @@ Se propone hallar $f$ con modelos paramétricos y no-paramétricos.
 
 ![Series de Tiempo](Figs/ts_data.png)
 
-En el modelado:
+**Figura**: Ilustración de la relación entre las variables exógenas y endógenas y la serie de tiempo que se busca predecir.
+
+En el modelado de series de tiempo:
 * Importa el orden
   - No mezclamos para entrenar
   - Armamos ventanas de datos
@@ -62,7 +66,7 @@ En el modelado:
 * Incluímos estados anteriores
 * El pasado puede contener información para predecir.
 
-Descubrir el operador temporal
+Se busca descubrir el operador temporal.
 
 ### Propiedades de las series temporales y los pronósticos
 
@@ -85,7 +89,7 @@ con el tiempo como:
 
 ### Principales áreas de aplicación del análisis de series temporales
 
-* Pronósticos, es decir, predecir valores futuros de la serie conociendo el pasa  do. Ej, precios, demandas de bienes y servicios, etc.  
+* Pronósticos, es decir, predecir valores futuros de la serie conociendo el pasado. Ej, precios, demandas de bienes y servicios, etc.  
 * Imputación, completar los datos faltantes de una serie temporal. Ej, rellenar faltantes de los registros de una estación meteorológica...
 * Interpretación y causalidad (inferencia), es decir, comprender las interrelaciones entre las variables de entrada y las salidas... Derivar y evaluar relaciones causales.
 
