@@ -49,18 +49,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-	
+
       - name: Install Jupyter Book (via myst)
         run: npm install -g jupyter-book
-	
+
       - name: Build HTML Assets
         run: jupyter-book build --html --execute
-	
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './_build/html'
-	  
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
