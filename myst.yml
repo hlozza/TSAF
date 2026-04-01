@@ -26,7 +26,7 @@ project:
         - file: Notebooks/Guide_00/guia-00_EDA.ipynb
         - file: Notebooks/Guide_01/guía-01_dominio-del-tiempo.ipynb
         - file: Notebooks/Guide_02/guía-02_dominio-frecuencia.ipynb
-        - file: Notebooks/Guide_03/guia-03_Regresión.ipynb
+#        - file: Notebooks/Guide_03/guia-03_Regresión.ipynb
     - title: Anexo 1
       children: 
         - file: Notebooks/Ancillary_00/auxiliar-00_date-time-types.ipynb

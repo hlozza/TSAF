@@ -29,22 +29,38 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - uses: actions/setup-node@v4
+        uses: actions/configure-pages@v4
+
+      # Install dependencies
+      - name: Set up Python
+        uses: actions/setup-python@v6
         with:
-          node-version: 18.x
-      - name: Install Python requirements
+          python-version: "3.12"
+          cache: pip # Implicitly uses requirements.txt for cache key
+
+      - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+	
       - name: Install Jupyter Book (via myst)
         run: npm install -g jupyter-book
+	
       - name: Build HTML Assets
         run: jupyter-book build --html --execute
+	
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './_build/html'
+	  
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
