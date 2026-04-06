@@ -23,13 +23,16 @@ project:
     - title: Parte 1
       children:
         - file: Lectures/Text_01/texto-01_introducción.md
-        - file: Notebooks/Guide_00/guia-00_EDA.ipynb
+        - file: Notebooks/Guide_00/guia-00_EDA_RESUELTO.ipynb
         - file: Notebooks/Guide_01/guía-01_dominio-del-tiempo.ipynb
-        - file: Notebooks/Guide_02/guía-02_dominio-frecuencia.ipynb
-#        - file: Notebooks/Guide_03/guia-03_Regresión.ipynb
-    - title: Anexo 1
+        - file: Notebooks/Guide_02/guía-02_dominio-frecuencia_RESUELTO.ipynb
+        - file: Notebooks/Guide_03/guia-03_Regresión_RESUELTO.ipynb
+        - file: Notebooks/Guide_04/guía-04_estocásticos-básicos_RESUELTO.ipynb
+    - title: Anexos
       children: 
         - file: Notebooks/Ancillary_00/auxiliar-00_date-time-types.ipynb
+        - file: Notebooks/Ancillary_01/auxiliar-01_estacionarios.ipynb
+        - file: Notebooks/Ancillary_02/auxiliar-02_sonidos-representación.ipynb
   exports:
     - format: pdf
       template: plain_latex_book
