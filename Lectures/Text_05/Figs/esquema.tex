@@ -1,0 +1,36 @@
+\documentclass{standalone}
+
+% pdflatex esquema.tex
+% magick -density 300 esquema.pdf -quality 90 -resize 640x640 esquema.png
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{snakes}
+
+\begin{document}
+
+% Models for time series 
+\begin{tikzpicture}
+
+  \draw[very thick, line cap=round, line join=round, ] (5,5) -- (5,2) -- (8,2)
+  (8,2.2) -- (8,5);
+  \draw[blue, dashed] (5,4)  -- (8,4);
+  \draw[line cap=round, line join=round] (8,2) -- (8.5,2);
+  \draw[line cap=round, line join=round] (8,2.2) -- (8.5,2.2)
+  node[align=right, above, scale=1, black]{$Q_s$};
+
+  \draw[snake=zigzag, blue, ->] (6,4.2) -- (6,5);
+  \node[align=right, scale=1, black] at (6.5,4.5) {$Q_e$};
+  
+  \draw[line cap=round, line join=round] (7,5.1) -- (7,5.5) -- (9,5.5);
+  \draw[line cap=round, line join=round] (7.2,5.1) -- (7.2,5.3) -- (9,5.3);
+
+  \foreach \i in {0,1,2}
+  \draw[blue, dashed] (7+0.1*\i,4.6)  -- (7+0.1*\i,5.0);
+
+  \draw[{Latex[length=3mm]}-{Latex[length=3mm]}] (5.5,4) -- (5.5,2)
+  node[align=right, pos=0.5, scale=1.5, black]{$x$};
+  
+\end{tikzpicture}
+
+
+\end{document}
