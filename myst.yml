@@ -28,6 +28,7 @@ project:
         - file: Notebooks/Guide_02/guía-02_dominio-frecuencia_RESUELTO.ipynb
         - file: Notebooks/Guide_03/guia-03_Regresión_RESUELTO.ipynb
         - file: Notebooks/Guide_04/guía-04_estocásticos-básicos_RESUELTO.ipynb
+        - file: Notebooks/Guide_05/guía-05_no-estacionarios.ipynb
     - title: Anexos
       children: 
         - file: Notebooks/Ancillary_00/auxiliar-00_date-time-types.ipynb
