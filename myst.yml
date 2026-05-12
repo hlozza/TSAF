@@ -32,6 +32,7 @@ project:
     - title: Parte 2
       children:
         - file: Notebooks/Guide_07/guía-07_LSTM-endo.ipynb
+        - file: Notebooks/Guide_08/guía-08_LSTM-exo.ipynb
     - title: Anexos
       children: 
         - file: Notebooks/Ancillary_00/auxiliar-00_date-time-types.ipynb
