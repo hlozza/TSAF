@@ -31,7 +31,7 @@ project:
         - file: Notebooks/Guide_05/guía-05_no-estacionarios.ipynb
     - title: Parte 2
       children:
-        - file: Notebooks/Guide_07/guía-07_LSTM-endo.ipynb
+        - file: Notebooks/Guide_07/guía-07_LSTM-endo_RESUELTO.ipynb
         - file: Notebooks/Guide_08/guía-08_LSTM-exo.ipynb
     - title: Anexos
       children: 
