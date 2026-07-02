@@ -34,7 +34,7 @@ project:
         - file: Notebooks/Guide_07/guía-07_LSTM-endo_RESUELTO.ipynb
         - file: Notebooks/Guide_08/guía-08_LSTM-exo.ipynb
         - file: Notebooks/Guide_09/guía-09_LSTM-shift-window_ex5.4.ipynb
-    - title: Parte 2
+    - title: Parte 3
       children:
         - file: Lectures/Text_10/texto-10_kalman-filter.md
         - file: Notebooks/Guide_10/auxiliar-10_local-trend.ipynb
