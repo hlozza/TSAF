@@ -21,6 +21,7 @@ ejemplo, a través de teledetección) ponderados de manera estadística
 El error de la variable asimilada siempre es menor que el error
 individual de cada fuente de datos.
 
+[1](#ecmwf) Fuente:ECMWF
 <figure id="fig_ecmwf">
 <div class="center">
 <img src="Figs/ECWMF.png" style="width:90.0%" />
@@ -396,6 +397,7 @@ la predicción a priori actual se combina con la información de
 observación actual para refinar la estimación del estado. Esta
 estimación mejorada se denomina estimación a posteriori del estado.
 
+[2](#wiki_kalman_filter) Fuente: Wikipedia
 <figure id="figcum">
 <div class="center">
 <img src="Figs/Kalman_filter_model_2.png" style="width:90.0%" />
@@ -468,32 +470,18 @@ modo, si hay múltiples observaciones independientes disponibles al mismo
 tiempo, se pueden realizar múltiples pasos de actualización (típicamente
 con diferentes matrices de observación $\mathbf{H}_t$).
 
-+:---------------------------------+:---------------------------------------------------------------------------------------------------------------------+
-| **Predicción**                                                                                                                                          |
-+----------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| **Predicción**                   | Expresión |
+| :---                             | :---      |
 | Estado estimado (a priori)       | $\hat{\mathbf{x} }_{t\mid t-1} = \mathbf{F}_{t} \hat{{\mathbf {x} }}_{t-1 \mid t-1} + \mathbf{B}_{t} \mathbf{u}_{t}$ |
-+----------------------------------+----------------------------------------------------------------------------------------------------------------------+
-| Predicción de la matriz de       | $\mathbf{P}_{t \mid t-1}=\mathbf{F}_{t} \mathbf{P}_{t-1 \mid t-1} \mathbf{F}_{t}^{\mathrm {T} }+ \mathbf{Q}_{t}$     |
-| covarianza (a priori)            |                                                                                                                      |
-+----------------------------------+----------------------------------------------------------------------------------------------------------------------+
-| **Actualización**                                                                                                                                       |
-+----------------------------------+----------------------------------------------------------------------------------------------------------------------+
-| Innovación o medida residual del | $\tilde {\mathbf {y} }_{t} = \mathbf {z} _{t} - \mathbf {H} _{t} {\hat {\mathbf {x} }}_{t\mid t-1}$                  |
-| pre-ajuste                       |                                                                                                                      |
-+----------------------------------+----------------------------------------------------------------------------------------------------------------------+
-| Covarianza de la innovación (o   | $\mathbf {S} _{t} = \mathbf {R} _{t} + \mathbf {H} _{t} \mathbf {P} _{t \mid t-1}\mathbf {H} _{t}^{\mathrm {T} }$    |
-| pre-ajuste residual)             |                                                                                                                      |
-+----------------------------------+----------------------------------------------------------------------------------------------------------------------+
-| Ganancia de Kalman óptima        | $\mathbf {K} _{t} = \mathbf {P} _{t \mid t-1} \mathbf {H} _{t}^{\mathrm {T} } \mathbf {S} _{t}^{-1}$                 |
-+----------------------------------+----------------------------------------------------------------------------------------------------------------------+
-| Estimación del estado            | $\hat {\mathbf {x} }_{t \mid t} = {\hat {\mathbf {x} }}_{t \mid t-1} + \mathbf {K} _{t}{\tilde {\mathbf {y} }}_{t}$  |
-| actualizado (a posteriori)       |                                                                                                                      |
-+----------------------------------+----------------------------------------------------------------------------------------------------------------------+
-| Estimación de la covarianza      | $\mathbf {P} _{t \mid t}=(\mathbf {I} -\mathbf {K} _{t} \mathbf {H} _{t}) \mathbf {P} _{t \mid t-1}$                 |
-| actualizada (a posteriori)       |                                                                                                                      |
-+----------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| Predicción de la matriz de  covarianza (a priori)     | $\mathbf{P}_{t \mid t-1}=\mathbf{F}_{t} \mathbf{P}_{t-1 \mid t-1} \mathbf{F}_{t}^{\mathrm {T} }+ \mathbf{Q}_{t}$     |
+| **Actualización**                |           |
+| Innovación o medida residual del pre-ajuste           | $\tilde {\mathbf {y} }_{t} = \mathbf {z} _{t} - \mathbf {H} _{t} {\hat {\mathbf {x} }}_{t\mid t-1}$   |
+| Covarianza de la innovación (o pre-ajuste residual)   | $\mathbf {S} _{t} = \mathbf {R} _{t} + \mathbf {H} _{t} \mathbf {P} _{t \mid t-1}\mathbf {H} _{t}^{\mathrm {T} }$  |
+| Ganancia de Kalman óptima                             | $\mathbf {K} _{t} = \mathbf {P} _{t \mid t-1} \mathbf {H} _{t}^{\mathrm {T} } \mathbf {S} _{t}^{-1}$  |
+| Estimación del estado actualizado (a posteriori)      | $\hat {\mathbf {x} }_{t \mid t} = {\hat {\mathbf {x} }}_{t \mid t-1} + \mathbf {K} _{t}{\tilde {\mathbf {y} }}_{t}$  |
+| Estimación de la covarianza actualizada (a posteriori)| $\mathbf {P} _{t \mid t}=(\mathbf {I} -\mathbf {K} _{t} \mathbf {H} _{t}) \mathbf {P} _{t \mid t-1}$  |
 | Medida residual del post-ajuste  | ${\tilde {\mathbf {y} }}_{t \mid t} = \mathbf {z} _{t} - \mathbf {H} _{t} {\hat {\mathbf {x} }}_{t \mid t}$          |
-+----------------------------------+----------------------------------------------------------------------------------------------------------------------+
+
 
 ### Filtro de Kalman para conjuntos (ensembles)
 
@@ -529,13 +517,13 @@ forman una muestra de la distribución de probabilidad a posteriori.
 
 <figure id="fig_KF_vs_EnKF">
 <figure id="fig_KF_schema">
-<img src="Figs/KF_schema.png" style="width:95.0%" />
+<img src="Figs/KF_schema.png" style="width:50.0%" />
 <figcaption>Esquema de filtro de Kalman (KF). Evoluciona la media y la
 varianza de manera explícita usando la matriz de transición. Leugo,
 aplica las ecuaciones de Kalman.</figcaption>
 </figure>
 <figure id="fig_EnKF_schema">
-<img src="Figs/EnKF_schema.png" style="width:95.0%" />
+<img src="Figs/EnKF_schema.png" style="width:50.0%" />
 <figcaption>Esquema de filtro de Kalman por Ensambles (EnKF). Toma
 muestras del estado inicial. Evoluciona cada estado usando la función
 (no lineal) de transición. Calcula la media y la varianza tomanda las
@@ -598,44 +586,23 @@ Pasos operacionales:
 
 4.  Repetir 1) para el paso de tiempo siguiente
 
-+:---------------------------------+:----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Predicción**                                                                                                                                                                               |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Estado estimado (a priori)       | $\hat{\mathbf{X}}_{t \mid t-1} = \mathbf{F} \left( \hat{\mathbf{X}}_{t-1 \mid t-1} , t \right)$                                                           |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Predicción de la media del       | $E\left[ \mathbf{X}_{t \mid t-1} \right] = \frac{1}{N} \left( \mathbf{X}_{t \mid t-1}  \mathbf{e}_{N \times 1} \right)$                                   |
-| ensemble (a priori)              |                                                                                                                                                           |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Predicción del error de la media | $\mathbf{A}_{t \mid t-1}  = \mathbf{X}_{t \mid t-1}  - E \left[ \mathbf{X}_{t \mid t-1}  \right] \mathbf{e}_{1 \times N}$                                 |
-| (a priori)                       |                                                                                                                                                           |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Predicción de la matriz de       | $\mathbf{P}_{t\mid t-1} = \frac{1}{N-1} \mathbf{A}_{t\mid t-1} \mathbf{A}_{t\mid t-1}^{\mathrm{T}}$                                                       |
-| covarianza (a priori)            |                                                                                                                                                           |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Actualización**                                                                                                                                                                            |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Innovación o medida residual del | $\tilde {\mathbf {Y} }_{t} = \mathbf {Z} _{t} - \mathbf {H} _{t} {\hat {\mathbf {X} }}_{t\mid t-1}$                                                       |
-| pre-ajuste                       |                                                                                                                                                           |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Covarianza de la innovación (o   | $\mathbf {S}_{t} = \frac{1}{N-1} \mathbf{H}_{t} \mathbf{A}_{t \mid t-1} \left(\mathbf{H}_{t} \mathbf{A}_{t \mid t-1} \right)^{\mathrm{T}}+\mathbf{R}_{t}$ |
-| pre-ajuste residual)             |                                                                                                                                                           |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+| **Predicción**                   | Expresión |
+| :---                             | :---      |
+| Estado estimado (a priori)       | $\hat{\mathbf{X}}_{t \mid t-1} = \mathbf{F} \left( \hat{\mathbf{X}}_{t-1 \mid t-1} , t \right)$      |
+| Predicción de la media del ensemble (a priori)       | $E\left[ \mathbf{X}_{t \mid t-1} \right] = \frac{1}{N} \left( \mathbf{X}_{t \mid t-1}  \mathbf{e}_{N \times 1} \right)$     |
+| Predicción del error de la media (a priori)  | $\mathbf{A}_{t \mid t-1}  = \mathbf{X}_{t \mid t-1}  - E \left[ \mathbf{X}_{t \mid t-1}  \right] \mathbf{e}_{1 \times N}$   |
+| Predicción de la matriz de covarianza (a priori)  | $\mathbf{P}_{t\mid t-1} = \frac{1}{N-1} \mathbf{A}_{t\mid t-1} \mathbf{A}_{t\mid t-1}^{\mathrm{T}}$      |
+| **Actualización**                |           	|
+| Innovación o medida residual del pre-ajuste  | $\tilde {\mathbf {Y} }_{t} = \mathbf {Z} _{t} - \mathbf {H} _{t} {\hat {\mathbf {X} }}_{t\mid t-1}$     |
+| Covarianza de la innovación (o pre-ajuste residual)  | $\mathbf {S}_{t} = \frac{1}{N-1} \mathbf{H}_{t} \mathbf{A}_{t \mid t-1} \left(\mathbf{H}_{t} \mathbf{A}_{t \mid t-1} \right)^{\mathrm{T}}+\mathbf{R}_{t}$ |
 | Ganancia de Kalman óptima        | $\mathbf{K}_t = \frac{1}{N-1} \mathbf{A}_{t \mid t-1} \left(\mathbf{H}_t  \mathbf{A}_{t \mid t-1} \right)^{\mathrm{T}} \mathbf{S}_t^{-1}$                 |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Estimación del estado            | $\hat {\mathbf {X} }_{t \mid t} = {\hat {\mathbf {X} }}_{t \mid t-1} + \mathbf {K} _{t}{\tilde {\mathbf {y} }}_{t}$                                       |
-| actualizado (a posteriori)       |                                                                                                                                                           |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Estimación de la media del       | $E\left[ \mathbf{X}_{t \mid t} \right] = \frac{1}{N} \left( \mathbf{X}_{t \mid t}  \mathbf{e}_{N \times 1} \right)$                                       |
-| ensemble (a posteriori)          |                                                                                                                                                           |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Estimación del error de la media | $\mathbf{A}_{t \mid t}  = \mathbf{X}_{t \mid t}  - E \left[ \mathbf{X}_{t \mid t}  \right] \mathbf{e}_{1 \times N}$                                       |
-| (a posteriori)                   |                                                                                                                                                           |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Estimación de la matriz de       | $\mathbf{P}_{t\mid t} = \frac{1}{N-1} \mathbf{A}_{t\mid t} \mathbf{A}_{t\mid t}^{\mathrm{T}}$                                                             |
-| covarianza (a posteriori)        |                                                                                                                                                           |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Medida residual del post-ajuste  | ${\tilde {\mathbf {Y} }}_{t \mid t} = \mathbf {Z}_{t} - \mathbf {H}_{t} {\hat {\mathbf {X} }}_{t \mid t}$                                                 |
-+----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Estimación del estado actualizado (a posteriori) | $\hat {\mathbf {X} }_{t \mid t} = {\hat {\mathbf {X} }}_{t \mid t-1} + \mathbf {K} _{t}{\tilde {\mathbf {y} }}_{t}$      |
+| Estimación de la media del ensemble (a posteriori)  | $E\left[ \mathbf{X}_{t \mid t} \right] = \frac{1}{N} \left( \mathbf{X}_{t \mid t}  \mathbf{e}_{N \times 1} \right)$     |
+| Estimación del error de la media (a posteriori) | $\mathbf{A}_{t \mid t}  = \mathbf{X}_{t \mid t}  - E \left[ \mathbf{X}_{t \mid t}  \right] \mathbf{e}_{1 \times N}$    |
+| Estimación de la matriz de covarianza (a posteriori)  | $\mathbf{P}_{t\mid t} = \frac{1}{N-1} \mathbf{A}_{t\mid t} \mathbf{A}_{t\mid t}^{\mathrm{T}}$     |
+| Medida residual del post-ajuste  | ${\tilde {\mathbf {Y} }}_{t \mid t} = \mathbf {Z}_{t} - \mathbf {H}_{t} {\hat {\mathbf {X} }}_{t \mid t}$    |
+
 
 La estimación de la media del ensemble (a posteriori) nos da el valor
 más realista del estado $\mathbf{x}$ al tiempo $t$ usando las
@@ -653,7 +620,7 @@ $y_t = \left[1,  0\right] \left[ \begin{array}{c} x_t \\ x_{t-1} \end{array} \ri
 
 $\left[ \begin{array}{c} x_t \\ x_{t-1} \end{array}  \right]  = \left[ \begin{array}{cc} a_1 & a_2 \\ 1 & 0 \end{array} \right] \left[ \begin{array}{c} x_{t-1} \\ x_{t-2} \end{array}  \right] + \left[ \begin{array}{c} \epsilon_t \\ 0 \end{array} \right] , \,\, \mathrm{con} \,\, F =  \left[ \begin{array}{cc} a_1 & a_2 \\ 1 & 0 \end{array} \right] , \,\, Q = \left[ \begin{array}{cc} \sigma^2 & 0 \\ 0 & 0 \end{array} \right]$
 
-Para más detalles ver [@statsmodels; @chadfulton; @medium]
+Para más detalles ver [3](#statsmodels), [4](#chadfulton), [5](#medium)
 
 ## Ejercicios
 
@@ -684,34 +651,15 @@ obtener nuevas estimaciones usando los pesos óptimos del modelo lineal
 Luego, podemos calcular los estimadores de media y varianza para los
 valores obtenidos aplicando el modelo lineal.
 
-+:-------------+:-------------+:-------------+:-------------+:-------------+:-------------+:-------------+
-| ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage |
-| N de         | mean(x1)     | var(x1)      | mean(x2)     | var(x2)      | mean(xML)    | Var(xML)     |
-| muestras     | :::          | :::          | :::          | :::          | :::          | :::          |
-| :::          |              |              |              |              |              |              |
-+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
-| ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage |
-| 10           | :::          | :::          | :::          | :::          | :::          | :::          |
-| :::          |              |              |              |              |              |              |
-+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
-| ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage |
-| 100          | :::          | :::          | :::          | :::          | :::          | :::          |
-| :::          |              |              |              |              |              |              |
-+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
-| ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage |
-| 1000         | :::          | :::          | :::          | :::          | :::          | :::          |
-| :::          |              |              |              |              |              |              |
-+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
-| ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage |
-| 10000        | :::          | :::          | :::          | :::          | :::          | :::          |
-| :::          |              |              |              |              |              |              |
-+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
-| ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage | ::: minipage |
-| 100000       | :::          | :::          | :::          | :::          | :::          | :::          |
-| :::          |              |              |              |              |              |              |
-+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
-|              |              |              |              |              |              |              |
-+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+
+| N de muestras  | mean(x1)     | var(x1)      | mean(x2)     | var(x2)      | mean(xML)    | Var(xML)     |
+| :---           | :---         | :---         | :---         | :---         | :---         | :---         |
+| 10             |              |              |              |              |              |              |
+| 100            |              |              |              |              |              |              |
+| 1000           |              |              |              |              |              |              |
+| 10000          |              |              |              |              |              |              |
+| 100000         |              |              |              |              |              |              |
+
 
 : Completamos la tabla para los distintos tamaños de muestras
 propuestas.
@@ -734,7 +682,7 @@ Nota: para obtener resultados repetibles usar por ejemplo
 ------------------------------------------------------------------------
 :::
 
-### Ejercicio 2 - Estimación secuencial con modelo lineal en una variable {#estimaciuxf3n-secuencial-con-modelo-lineal-en-una-variable}
+### Ejercicio 2 - Estimación secuencial con modelo lineal en una variable 
 
 En el primer ejemplo vamos a considerar una magnitud de valor constante.
 Sabemos que los valores medidos contienen un término de error. Simulamos
@@ -824,21 +772,25 @@ de la señal, número de observaciones que se toman para cada nivel y la
 evolución de los valores de estado luego de aplicar las ecuaciones de
 Kalman.
 
-::: thebibliography
-99
 
-Fifty years of data assimilation at ECMWF, ECMWF,
+
+(ecmwf)=
+1 Fifty years of data assimilation at ECMWF, ECMWF,
 <https://www.ecmwf.int/bibcite/reference/81650>
 
-Kalman Filter, Wikipedia, <https://en.wikipedia.org/wiki/Kalman_filter>
+(wiki_kalman_filter)=
+2 Kalman Filter, Wikipedia, <https://en.wikipedia.org/wiki/Kalman_filter>
 
-Statsmodels - Time Series Analysis by State Space
-Methods<https://www.statsmodels.org/stable/statespace.html#models-and-estimation>
+(statsmodels)=
+3 Statsmodels - Time Series Analysis by State Space
+Methods <https://www.statsmodels.org/stable/statespace.html#models-and-estimation>
 
-Estimating time series models by state space methods in Python:
-Statsmodels
+(chadfulton)=
+4 Estimating time series models by state space methods in Python: Statsmodels
 <https://www.statsmodels.org/stable/statespace.html#models-and-estimation>
 
-The Kalman Filter and (Maximum) Likelihood
+(medium)=
+5 The Kalman Filter and (Maximum) Likelihood
 <https://medium.com/data-science/the-kalman-filter-and-maximum-likelihood-9861666f6742>
-:::
+
+
